@@ -9,12 +9,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- custom css link -->
     <link rel="stylesheet" href="style.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
+
     <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
-              <a class="navbar-brand" href="#">NewsBD.24</a>
+              <a class="navbar-brand" href="#"><span class="text-primary fw-bold">NewsBD</span>.24</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -22,18 +26,32 @@
                 <div class="navbar-nav ms-auto">
                   <a class="nav-link active" aria-current="page" href="#">News</a>
                   <a class="nav-link" href="#">Blogs</a>
-                  <a class="nav-link" href="#">Pricing</a>
                 </div>
               </div>
             </div>
+            
           </nav>
+          <hr class="container">
           <section class="container mt-3 ">
             <ul id="categories" class=" d-flex justify-content-between fw-semibold">
 
             </ul>
           </section>
     </header>
+    <!-- spinner -->
+    <div id="spinner" class="d-flex justify-content-center d-none mt-5">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    <main>
+        <div>
 
+        </div>
+        <section id="news-container" class="container mt-5">
+          
+        </section>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="news.js"></script>
 </body>
