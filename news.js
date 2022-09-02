@@ -30,15 +30,16 @@ const loadNews = (category_id)=>{
     .then(res => res.json())
     .then(data => displayNews(data.data))
 }
-loadNews('01')
+loadNews('01');
 
 
 // display news 
 const displayNews = (news)=>{
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ' '
+    news.sort((a, b) => b.total_view - a.total_view);
     news.forEach(singleNews =>{
-        const{_id,author,image_url,title,total_view,details} = singleNews;
+        const{_id,author,image_url,title,details,total_view} = singleNews;
         console.log(singleNews)
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('card');
