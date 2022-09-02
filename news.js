@@ -66,7 +66,9 @@ const displayNews = (news,category_name)=>{
                        <p> ${author.published_date? author.published_date:'No date found'}</p>
                     </div>
                     <div><i class="fa-solid fa-eye me-1"></i>${total_view? total_view: 'no view found'} </div>
-                    <i onclick = "loadDetails('${_id}')" style= "cursor:pointer" class="fa-solid fa-2x fa-arrow-right" data-bs-toggle="modal" data-bs-target="#newsModal"></i>
+                    <div onclick = "loadDetails('${_id}')" style=   "cursor:pointer"  class = "d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#newsModal">
+                        <span>See Details</span><i class="fa-solid fa-2x fa-arrow-right"></i>
+                    </div>
                 </small></div>
             </div>
             </div>
@@ -90,7 +92,8 @@ const loadDetails = (id)=>{
 const showDetails = (details)=>{
    console.log(details)
     const{title,thumbnail_url,author,rating} = details;
-    document.getElementById('newsModalLabel').innerText = title;const thumbnailImg = document.getElementById('thumbnail-img');
+    document.getElementById('newsModalLabel').innerText = `News Title:${title}`;
+    const thumbnailImg = document.getElementById('thumbnail-img');
     thumbnailImg.src = thumbnail_url;
     const detailsContainer = document.getElementById('details');
     detailsContainer.innerHTML = `
