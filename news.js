@@ -16,7 +16,7 @@ const displayCategories = (categories)=>{
         li.innerText = category_name;
         categoriesContainer.appendChild(li);
         li.onclick = ()=>{
-            loadNews(category_id);
+            loadNews(category_id,category_name);
         }
         
     })
@@ -24,23 +24,29 @@ const displayCategories = (categories)=>{
 }
 
 // load news 
-const loadNews = (category_id)=>{
+const loadNews = (category_id,category_name)=>{
     spinner(true);
     fetch(` https://openapi.programming-hero.com/api/news/category/${category_id}`)
     .then(res => res.json())
-    .then(data => displayNews(data.data))
+    .then(data => displayNews(data.data,category_name))
 }
 loadNews('01');
 
 
 // display news 
-const displayNews = (news)=>{
+const displayNews = (news,category_name)=>{
     const newsContainer = document.getElementById('news-container');
+    const newsCount = document.getElementById('news-count');
+    if(news.length > 0){
+        newsCount.innerText = `${news.length} news found for category ${category_name}.`;
+    }else{
+        newsCount.innerText = `No news found for category${category_name}`;
+    }
+
     newsContainer.innerHTML = ' '
     news.sort((a, b) => b.total_view - a.total_view);
     news.forEach(singleNews =>{
         const{_id,author,image_url,title,details,total_view} = singleNews;
-        console.log(singleNews)
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('card');
         newsDiv.classList.add('mb-3')
@@ -60,7 +66,7 @@ const displayNews = (news)=>{
                        <p> ${author.published_date? author.published_date:'No date found'}</p>
                     </div>
                     <div><i class="fa-solid fa-eye me-1"></i>${total_view? total_view: 'no view found'} </div>
-                    <i onclick = "loadDetails('${_id}')" style= "cursor:pointer" class="fa-solid fa-2x fa-arrow-right"></i>
+                    <i onclick = "loadDetails('${_id}')" style= "cursor:pointer" class="fa-solid fa-2x fa-arrow-right" data-bs-toggle="modal" data-bs-target="#newsModal"></i>
                 </small></div>
             </div>
             </div>
@@ -82,7 +88,17 @@ const loadDetails = (id)=>{
 
 // display details on modal
 const showDetails = (details)=>{
-    console.log(details)
+   console.log(details)
+    const{title,thumbnail_url,author,rating} = details;
+    document.getElementById('newsModalLabel').innerText = title;const thumbnailImg = document.getElementById('thumbnail-img');
+    thumbnailImg.src = thumbnail_url;
+    const detailsContainer = document.getElementById('details');
+    detailsContainer.innerHTML = `
+        <p>Author Name: ${author.name}</p>
+        <p>Rating Badge: ${rating.badge}</p>
+        <p>Rating Number: ${rating.number}</p>
+    `
+
 }
 
 
