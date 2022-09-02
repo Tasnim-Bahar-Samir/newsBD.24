@@ -4,4 +4,9 @@ body{
 li{
     list-style: none;
     cursor: pointer;
+    padding: .3rem .5rem;
+}
+.active{
+    background-color: gainsboro;
+    border-radius: .5rem;
 }

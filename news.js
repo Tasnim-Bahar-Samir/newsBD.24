@@ -13,13 +13,17 @@ const displayCategories = (categories)=>{
     categories.forEach(category =>{
         const{category_id, category_name} = category;
         const li = document.createElement('li');
+
         li.innerText = category_name;
         categoriesContainer.appendChild(li);
-        li.onclick = ()=>{
+        li.onclick = (e)=>{
+            document.querySelector('.active').classList.remove('active')
+               e.target.className = 'active'
             loadNews(category_id,category_name);
         }
         
     })
+    
     spinner(false);
 }
 
