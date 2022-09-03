@@ -1,6 +1,5 @@
 // load categories
 const loadCategories = ()=>{
-    spinner(true);
     fetch(' https://openapi.programming-hero.com/api/news/categories')
     .then(res => res.json())
     .then(data => displayCategories(data.data.news_category))
@@ -25,7 +24,6 @@ const displayCategories = (categories)=>{
         
     })
     
-    spinner(false);
 }
 
 // load news 
