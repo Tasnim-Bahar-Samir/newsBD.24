@@ -4,6 +4,7 @@ const loadCategories = ()=>{
     fetch(' https://openapi.programming-hero.com/api/news/categories')
     .then(res => res.json())
     .then(data => displayCategories(data.data.news_category))
+    .catch(error => showError(error,'categories'))
 }
 loadCategories();
 
@@ -33,6 +34,7 @@ const loadNews = (category_id,category_name)=>{
     fetch(` https://openapi.programming-hero.com/api/news/category/${category_id}`)
     .then(res => res.json())
     .then(data => displayNews(data.data,category_name))
+    .catch(error => showError(error,'news-container'))
 }
 loadNews('01');
 
@@ -89,6 +91,7 @@ const loadDetails = (id)=>{
     fetch(`https://openapi.programming-hero.com/api/news/${id}`)
     .then(res => res.json())
     .then(data => showDetails(data.data[0]))
+    .catch(error => showError(error,'newsModalLabel'))
 }
 
 
@@ -96,25 +99,35 @@ const loadDetails = (id)=>{
 const showDetails = (details)=>{
    console.log(details)
     const{title,thumbnail_url,author,rating} = details;
-    document.getElementById('newsModalLabel').innerText = `News Title:${title}`;
+    document.getElementById('newsModalLabel').innerText = `News Title:${title?title : 'no title found'}`;
     const thumbnailImg = document.getElementById('thumbnail-img');
     thumbnailImg.src = thumbnail_url;
     const detailsContainer = document.getElementById('details');
     detailsContainer.innerHTML = `
-        <p>Author Name: ${author.name}</p>
-        <p>Rating Badge: ${rating.badge}</p>
-        <p>Rating Number: ${rating.number}</p>
+        <p>Author Name: ${author.name? author.name: 'no name found'}</p>
+        <p>Rating Badge: ${rating.badge? rating.badge : 'no badge found'}</p>
+        <p>Rating Number: ${rating.number? rating.number : 'no number found'}</p>
     `
 
 }
 
 
 // spinner 
-function spinner(isLoading){
+function spinner(isLoading,id){
     const loadingSpinner = document.getElementById('spinner');
     if(isLoading){
         loadingSpinner.classList.remove('d-none');
     }else{
         loadingSpinner.classList.add('d-none');
     }
+}
+
+//error msg
+const showError = (msg,id)=>{
+    const msgField = document.getElementById(id);
+    msgField.classList.add('text-danger')
+    msgField.innerText = `
+    404 Not found
+    ${msg} 
+    `
 }
