@@ -36,7 +36,7 @@ const loadNews = (category_id,category_name)=>{
     .then(data => displayNews(data.data,category_name))
     .catch(error => showError(error,'news-container'))
 }
-loadNews('01');
+
 
 
 // display news 
@@ -46,7 +46,7 @@ const displayNews = (news,category_name)=>{
     if(news.length > 0){
         newsCount.innerText = `${news.length} news found for category ${category_name}.`;
     }else{
-        newsCount.innerText = `No news found for category${category_name}`;
+        newsCount.innerText = `No news found for category ${category_name}`;
     }
 
     newsContainer.innerHTML = ' '

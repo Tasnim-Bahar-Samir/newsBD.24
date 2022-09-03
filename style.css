@@ -16,3 +16,9 @@ li{
     background-color: gainsboro;
     border-radius: .5rem;
 }
+@media  (max-width: 576px) {
+
+    #categories li{
+        margin-bottom: 5px;
+    }
+}
