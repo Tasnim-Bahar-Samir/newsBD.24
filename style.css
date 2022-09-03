@@ -7,6 +7,12 @@ li{
     padding: .3rem .5rem;
 }
 .active{
+    color: rgb(59, 59, 248);
+    background-color: gainsboro;
+    border-radius: .5rem;
+}
+.active-file{
+    color: rgb(59, 59, 248);
     background-color: gainsboro;
     border-radius: .5rem;
 }

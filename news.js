@@ -17,8 +17,8 @@ const displayCategories = (categories)=>{
         li.innerText = category_name;
         categoriesContainer.appendChild(li);
         li.onclick = (e)=>{
-            document.querySelector('.active').classList.remove('active')
-               e.target.className = 'active'
+            document.querySelector('.active').classList.remove('active');
+               e.target.className = 'active';
             loadNews(category_id,category_name);
         }
         
