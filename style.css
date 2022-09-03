@@ -1,5 +1,6 @@
 body{
     background-color: #f8f9fa;
+   
 }
 li{
     list-style: none;
@@ -16,6 +17,7 @@ li{
     background-color: gainsboro;
     border-radius: .5rem;
 }
+
 @media  (max-width: 576px) {
 
     #categories li{

@@ -35,7 +35,7 @@ const loadNews = (category_id,category_name)=>{
     .catch(error => showError(error,'news-container'))
 }
 
-
+loadNews('08','All News');
 
 // display news 
 const displayNews = (news,category_name)=>{
@@ -69,7 +69,7 @@ const displayNews = (news,category_name)=>{
                        <p> ${author.name? author.name:'No name found'}</p>
                        <p> ${author.published_date? author.published_date:'No date found'}</p>
                     </div>
-                    <div><i class="fa-solid fa-eye me-1"></i>${total_view? total_view: 'no view found'} </div>
+                    <div><i class="fa-solid fa-eye me-1"></i>${total_view? total_view +'M' : 'no view found'} </div>
                     <div onclick = "loadDetails('${_id}')" style=   "cursor:pointer"  class = "d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#newsModal">
                         <span>See Details</span><i class="fa-solid fa-2x fa-arrow-right"></i>
                     </div>
@@ -128,4 +128,5 @@ const showError = (msg,id)=>{
     404 Not found
     ${msg} 
     `
+    spinner(false);
 }
